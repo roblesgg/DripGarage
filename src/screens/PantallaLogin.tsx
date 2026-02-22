@@ -14,7 +14,7 @@ const PantallaBienvenida = ({ navigation }: any) => {
       </View>
 
       {/* Caja de abajo para el botón */}
-      <TouchableOpacity style={styles.botonEntrar} onPress={() => navigation.navigate('Garage')}>
+      <TouchableOpacity style={styles.botonEntrar} onPress={() => navigation.replace('Garage')}>
         <Text style={styles.textoBoton}>Entrar</Text>
       </TouchableOpacity>
 

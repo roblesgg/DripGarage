@@ -29,7 +29,11 @@ const App = () => {
         <Stack.Screen 
           name="Garage" 
           component={PantallaGarage} 
-          options={{ headerShown: false }}
+          options={{ 
+            headerShown: false,
+            animation: 'fade' // Opciones: 'fade', 'none', 'slide_from_right', 'slide_from_bottom'
+
+          }}
         />
 
       </Stack.Navigator>
