@@ -1,71 +1,40 @@
 import React from 'react';
-// Importamos TouchableOpacity, que es el componente oficial para hacer botones táctiles
-import { View, Text, StyleSheet, TouchableOpacity,ImageBackground} from 'react-native';
 
-const PantallaBienvenida = () => {
+// 1. Importamos las herramientas principales de navegación
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// 2. Importamos tus pantallas desde la nueva carpeta src
+import PantallaLogin from './src/screens/PantallaLogin';
+import PantallaGarage from './src/screens/PantallaGarage';
+
+// 3. Creamos el contenedor de rutas (Stack)
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    // La caja principal que ocupa toda la pantalla
-    <ImageBackground source={require('./assets/fondo.png')} style={styles.pantalla} resizeMode='cover'> 
-      
-      {/* Caja de arriba para el título */}
-      <View style={styles.cajaTitulo}>
-        <Text style={styles.textoDrip}>Drip</Text>
-        <Text style={styles.textoGarage}>Garage</Text>
-      </View>
+    // NavigationContainer siempre debe envolver toda la aplicación
+    <NavigationContainer>
+      {/* Navigator gestiona el historial de pantallas. Le decimos que arranque en "Login" */}
+      <Stack.Navigator initialRouteName="Login">
+        
+        {/* Registramos la pantalla de Login */}
+        <Stack.Screen 
+          name="Login" 
+          component={PantallaLogin} 
+          options={{ headerShown: false }} // Oculta la barra superior por defecto de Android
+        />
 
-      {/* Caja de abajo para el botón */}
-      <TouchableOpacity style={styles.botonEntrar}>
-        <Text style={styles.textoBoton}>Entrar</Text>
-      </TouchableOpacity>
+        {/* Registramos la pantalla del Garaje */}
+        <Stack.Screen 
+          name="Garage" 
+          component={PantallaGarage} 
+          options={{ headerShown: false }}
+        />
 
-
-
-    </ImageBackground>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
-// Aquí viene la magia del diseño (Flexbox)
-const styles = StyleSheet.create({
-  pantalla: {
-    flex: 1, // Ocupa toda la pantalla
-    alignItems: 'center', // Centra todo en horizontal
-    justifyContent: 'space-between', // ¡CLAVE! Empuja el título arriba y el botón abajo
-    paddingTop: 100, // Espacio desde el borde de arriba
-    paddingBottom: 80, // Espacio desde el borde de abajo
-  },
-  cajaTitulo: {
-    alignItems: 'center',
-  },
-  textoDrip: {
-    fontSize: 90,
-    fontWeight: 'bold',
-    color: '#000000',
-    fontFamily: 'Montserrat-Bold', 
-  },
-  textoGarage: {
-    fontSize: 60,
-    color: '#000000',
-    marginTop: -10, // Sube un poco la palabra para que estén más juntas
-    fontFamily: 'Montserrat-Bold', 
-    fontWeight: 'bold',
-  },
-botonEntrar: {
-    backgroundColor: '#1E1E1E', // Un gris casi negro, muy elegante
-    paddingVertical: 15, 
-    paddingHorizontal: 60, 
-    borderRadius: 30, 
-    borderWidth: 2,           // Le añadimos un borde...
-    borderColor: '#555555',   // ...de color gris metálico
-    elevation: 8,             // Sombra nativa de Android para que flote
-  },
-  textoBoton: {
-    fontSize: 22, // Un poco más pequeño pero más agresivo
-    color: '#FFFFFF', // Letra blanca para contrastar
-    fontFamily: 'Montserrat-Bold', 
-    textTransform: 'uppercase', // TRUCO PRO: Fuerza que todo salga en MAYÚSCULAS
-    letterSpacing: 2, // TRUCO PRO: Separa las letras un poco entre sí
-    includeFontPadding: false,
-  },
-});
-
-export default PantallaBienvenida;
+export default App;
