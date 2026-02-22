@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, TouchableOpacity,ImageBackground} from 'react-n
 const PantallaBienvenida = ({ navigation }: any) => {
   return (
     // La caja principal que ocupa toda la pantalla
-    <ImageBackground source={require('./assets/fondo.png')} style={styles.pantalla} resizeMode='cover'> 
+    <ImageBackground source={require('../../assets/fondo.png')} style={styles.pantalla} resizeMode='cover'> 
       
       {/* Caja de arriba para el título */}
       <View style={styles.cajaTitulo}>
