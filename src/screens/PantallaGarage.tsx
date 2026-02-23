@@ -4,31 +4,36 @@ import {Text, StyleSheet, ImageBackground} from 'react-native';
 const PantallaGaraje = () => {
   return (
     
-    <ImageBackground source={require('../../assets/fondo.png')} style={styles.pantalla} resizeMode='cover'> 
-      <Text style={styles.titulo}>Mi Garaje</Text>
-      <Text style={styles.subtitulo}>Aquí irán tus coches</Text>
-  
+    <ImageBackground source={require('../../assets/fondo2.png')} style={styles.pantalla} resizeMode='cover'> 
+      <Text style={styles.textoDrip}>Drip</Text>
+      <Text style={styles.textoGarage}>Garage</Text>
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+
+  textoDrip: {
+    position: 'absolute', // Hace que el texto flote y no le importen las reglas de la caja
+    top: 25,              // Lo clava a 60 píxeles del techo
+    color: '#ffffff',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+    textoGarage: {
+    position: 'absolute', // Hace que el texto flote y no le importen las reglas de la caja
+    top: 40,              // Lo clava a 60 píxeles del techo
+    color: '#ffffff',
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
   pantalla: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  titulo: {
-    color: '#FFFFFF',
-    letterSpacing: 2,
-    fontSize: 35,
-    fontFamily: 'Montserrat-Bold',
-  },
-  subtitulo: {
-    color: '#A9A9A9',
-    fontSize: 18,
-    marginTop: 10,
-  }
 });
 
 // IMPORTANTÍSIMO: Exportar la pantalla para que App.tsx pueda "llamarla"
