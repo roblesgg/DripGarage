@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   pantalla: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent:s 'center',
   },
   titulo: {
     color: '#FFFFFF',
