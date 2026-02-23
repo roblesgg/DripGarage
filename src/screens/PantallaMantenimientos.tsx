@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, StyleSheet, ImageBackground} from 'react-native';
 
-const PantallaGarage = () => {
+const PantallaMantenimientos = () => {
   return (
     
     <ImageBackground source={require('../../assets/fondo2.png')} style={styles.pantalla} resizeMode='cover'> 
-      <Text style={styles.textoDrip}>Garage</Text>
+      <Text style={styles.textoDrip}>Mantenimientos</Text>
     </ImageBackground>
   );
 };
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
 });
 
 // IMPORTANTÍSIMO: Exportar la pantalla para que App.tsx pueda "llamarla"
-export default PantallaGarage;
+export default PantallaMantenimientos;
