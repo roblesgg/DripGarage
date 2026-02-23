@@ -1,24 +1,25 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground} from 'react-native';
 
 const PantallaGaraje = () => {
   return (
-    <View style={styles.pantalla}>
+    
+    <ImageBackground source={require('../../assets/fondo2.png')} style={styles.pantalla} resizeMode='cover'> 
       <Text style={styles.titulo}>Mi Garaje</Text>
       <Text style={styles.subtitulo}>Aquí irán tus coches</Text>
-    </View>
+  
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   pantalla: {
     flex: 1,
-    backgroundColor: '#1E1E1E', // Fondo oscuro DripGarage
     alignItems: 'center',
     justifyContent: 'center',
   },
   titulo: {
-    color: '#FFFFFF',
+    color: '#FFFFFF',letterSpacing
     fontSize: 35,
     fontFamily: 'Montserrat-Bold',
   },

@@ -37,13 +37,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textoDrip: {
-    fontSize: 90,
+    fontSize: 60,
     fontWeight: 'bold',
     color: '#000000',
     fontFamily: 'Montserrat-Bold', 
   },
   textoGarage: {
-    fontSize: 60,
+    fontSize: 90,
     color: '#000000',
     marginTop: -10, // Sube un poco la palabra para que estén más juntas
     fontFamily: 'Montserrat-Bold', 
