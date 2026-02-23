@@ -1,6 +1,6 @@
 import React from 'react';
 // Importamos TouchableOpacity, que es el componente oficial para hacer botones táctiles
-import { View, Text, StyleSheet, TouchableOpacity,ImageBackground} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity,ImageBackground,Image} from 'react-native';
 
 const PantallaBienvenida = ({ navigation }: any) => {
   return (
@@ -18,11 +18,14 @@ const PantallaBienvenida = ({ navigation }: any) => {
         <Text style={styles.textoBoton}>Entrar</Text>
       </TouchableOpacity>
 
+      <Image source={require('../../assets/DripDevLogo.png')} style={{width: 80, height: 80, position: 'absolute', bottom: 30}} />
 
 
     </ImageBackground>
   );
 };
+
+
 
 // Aquí viene la magia del diseño (Flexbox)
 const styles = StyleSheet.create({
@@ -57,6 +60,7 @@ botonEntrar: {
     borderWidth: 2,           // Le añadimos un borde...
     borderColor: '#555555',   // ...de color gris metálico
     elevation: 8,             // Sombra nativa de Android para que flote
+    bottom: 150,
   },
   textoBoton: {
     fontSize: 22, // Un poco más pequeño pero más agresivo
