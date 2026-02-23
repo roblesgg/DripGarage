@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; 
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { 
   IconoGaraje, 
@@ -35,6 +36,8 @@ const renderTabBarIcon = ({ route, color, focused }: any) => {
 
 // Creamos el bloque del Menú Inferior con sus 5 botones
 function NavBar() {
+  const insets = useSafeAreaInsets(); // Leemos las medidas del móvil
+  
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -43,7 +46,7 @@ function NavBar() {
         tabBarIcon: ({ color, focused }) => renderTabBarIcon({ route, color, focused }),
         
         tabBarStyle: {
-          backgroundColor: '#1E1E1E', // Mismo color de fondo que el botón (puedes volver al #313131 si lo prefieres)
+          backgroundColor: '#1E1E1E', // Mismo color de fondo que el botón
           borderRadius: 40,            
           position: 'absolute',       
           height: 80,
@@ -60,7 +63,8 @@ function NavBar() {
           shadowRadius: 5,
           // ------------------------------------
 
-          bottom: 30,               
+          // ¡AQUÍ ESTÁ LA MAGIA! Sumamos los 30px + el tamaño de los botones virtuales del móvil
+          bottom: 30 + insets.bottom,               
           marginHorizontal: 20,     
           paddingBottom: 0, 
           paddingTop: 0,
@@ -86,16 +90,19 @@ function NavBar() {
 // El enrutador principal
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={PantallaLogin} options={{ headerShown: false }} />
-        
-        <Stack.Screen 
-          name="Principal" 
-          component={NavBar} 
-          options={{ headerShown: false, animation: 'fade' }} 
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    // ¡SÚPER IMPORTANTE! Envolvemos el navegador para que el radar funcione en toda la app
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen name="Login" component={PantallaLogin} options={{ headerShown: false }} />
+          
+          <Stack.Screen 
+            name="Principal" 
+            component={NavBar} 
+            options={{ headerShown: false, animation: 'fade' }} 
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }

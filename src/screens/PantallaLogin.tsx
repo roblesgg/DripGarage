@@ -1,10 +1,13 @@
 import React from 'react';
-// Importamos TouchableOpacity, que es el componente oficial para hacer botones táctiles
-import { View, Text, StyleSheet, TouchableOpacity,ImageBackground,Image} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image } from 'react-native';
+// 1. Importamos la herramienta del Área Segura
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const PantallaBienvenida = ({ navigation }: any) => {
+  // 2. Encendemos el radar para medir la pantalla
+  const insets = useSafeAreaInsets();
+
   return (
-    // La caja principal que ocupa toda la pantalla
     <ImageBackground source={require('../../assets/fondo.png')} style={styles.pantalla} resizeMode='cover'> 
       
       {/* Caja de arriba para el título */}
@@ -13,28 +16,37 @@ const PantallaBienvenida = ({ navigation }: any) => {
         <Text style={styles.textoGarage}>Garage</Text>
       </View>
 
-      {/* Caja de abajo para el botón */}
-      <TouchableOpacity style={styles.botonEntrar} onPress={() => navigation.replace('Principal')}>
+      {/* Caja de abajo para el botón. Le sumamos los insets.bottom al bottom original de 150 */}
+      <TouchableOpacity 
+        style={[styles.botonEntrar, { bottom: 150 + insets.bottom }]} 
+        onPress={() => navigation.replace('Principal')}
+      >
         <Text style={styles.textoBoton}>Entrar</Text>
       </TouchableOpacity>
 
-      <Image source={require('../../assets/DripDevLogo.png')} style={{width: 80, height: 80, position: 'absolute', bottom: 30}} />
-
+      {/* Logo de DripDev. Le sumamos los insets.bottom al bottom original de 30 */}
+      <Image 
+        source={require('../../assets/DripDevLogo.png')} 
+        style={{
+          width: 80, 
+          height: 80, 
+          position: 'absolute', 
+          bottom: 30 + insets.bottom
+        }} 
+      />
 
     </ImageBackground>
   );
 };
 
-
-
 // Aquí viene la magia del diseño (Flexbox)
 const styles = StyleSheet.create({
   pantalla: {
-    flex: 1, // Ocupa toda la pantalla
-    alignItems: 'center', // Centra todo en horizontal
-    justifyContent: 'space-between', // ¡CLAVE! Empuja el título arriba y el botón abajo
-    paddingTop: 100, // Espacio desde el borde de arriba
-    paddingBottom: 80, // Espacio desde el borde de abajo
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'space-between', 
+    paddingTop: 100, 
+    paddingBottom: 80, 
   },
   cajaTitulo: {
     alignItems: 'center',
@@ -48,26 +60,26 @@ const styles = StyleSheet.create({
   textoGarage: {
     fontSize: 90,
     color: '#000000',
-    marginTop: -10, // Sube un poco la palabra para que estén más juntas
+    marginTop: -10, 
     fontFamily: 'Montserrat-Bold', 
     fontWeight: 'bold',
   },
-botonEntrar: {
-    backgroundColor: '#1E1E1E', // Un gris casi negro, muy elegante
+  botonEntrar: {
+    backgroundColor: '#1E1E1E', 
     paddingVertical: 15, 
     paddingHorizontal: 60, 
     borderRadius: 30, 
-    borderWidth: 2,           // Le añadimos un borde...
-    borderColor: '#555555',   // ...de color gris metálico
-    elevation: 8,             // Sombra nativa de Android para que flote
-    bottom: 150,
+    borderWidth: 2,           
+    borderColor: '#555555',   
+    elevation: 8,             
+    // Nota: He quitado el "bottom: 150" de aquí porque ahora se lo pasamos dinámicamente arriba en el TouchableOpacity
   },
   textoBoton: {
-    fontSize: 22, // Un poco más pequeño pero más agresivo
-    color: '#FFFFFF', // Letra blanca para contrastar
+    fontSize: 22, 
+    color: '#FFFFFF', 
     fontFamily: 'Montserrat-Bold', 
-    textTransform: 'uppercase', // TRUCO PRO: Fuerza que todo salga en MAYÚSCULAS
-    letterSpacing: 2, // TRUCO PRO: Separa las letras un poco entre sí
+    textTransform: 'uppercase', 
+    letterSpacing: 2, 
     includeFontPadding: false,
   },
 });
