@@ -4,7 +4,7 @@ import {Text, StyleSheet, ImageBackground} from 'react-native';
 const PantallaGaraje = () => {
   return (
     
-    <ImageBackground source={require('../../assets/fondo2.png')} style={styles.pantalla} resizeMode='cover'> 
+    <ImageBackground source={require('../../assets/fondo.png')} style={styles.pantalla} resizeMode='cover'> 
       <Text style={styles.titulo}>Mi Garaje</Text>
       <Text style={styles.subtitulo}>Aquí irán tus coches</Text>
   
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   pantalla: {
     flex: 1,
     alignItems: 'center',
-    justifyContent:s 'center',
+    justifyContent: 'center',
   },
   titulo: {
     color: '#FFFFFF',
