@@ -41,23 +41,34 @@ function NavBar() {
         headerShown: false, // Quitamos la barra de arriba fea
         tabBarShowLabel: false, // ¡AQUÍ ES DONDE DEBE IR! Apaga las letras
         tabBarIcon: ({ color, focused }) => renderTabBarIcon({ route, color, focused }),
+        
         tabBarStyle: {
-          backgroundColor: '#313131', 
-          borderRadius: 50,            
+          backgroundColor: '#1E1E1E', // Mismo color de fondo que el botón (puedes volver al #313131 si lo prefieres)
+          borderRadius: 40,            
           position: 'absolute',       
           height: 80,
-          borderTopWidth: 0,          
+          
+          borderWidth: 2,             // Ponemos el borde de 2 píxeles en todos los lados
+          borderColor: '#555555',     // Color gris metálico del borde
+          borderTopWidth: 2,          // (IMPORTANTE: React Navigation a veces borra el borde de arriba, con esto lo forzamos)
+          elevation: 8,               // Sombra nativa de Android para que la barra flote
+          
+          // --- SOMBRA PARA iOS (Por si acaso) ---
+          shadowColor: '#000000',
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.5,
+          shadowRadius: 5,
+          // ------------------------------------
+
           bottom: 30,               
           marginHorizontal: 20,     
           paddingBottom: 0, 
           paddingTop: 0,
-          elevation: 0,
-          shadowOpacity: 0,
         },
-        tabBarItemStyle: {
-          marginHorizontal: 10, // Tu espacio entre botones
-          paddingTop: 20, // Sube un poco los iconos para que estén centrados
-          paddingBottom: 10, // Baja un poco los iconos para que estén centrados
+        tabBarIconStyle: {
+          flex: 1,                  // Obliga a la caja del icono a usar todo el espacio (mata al fantasma)
+          justifyContent: 'center', // Centra el SVG verticalmente
+          alignItems: 'center',     // Centra el SVG horizontalmente
         },
         tabBarActiveTintColor: '#ffffff', // Color del icono cuando estás en esa pestaña
         tabBarInactiveTintColor: '#888888', // Color de los iconos inactivos
