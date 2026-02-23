@@ -6,7 +6,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; //para
 // 2. Importamos todas las pantallas
 import PantallaLogin from './src/screens/PantallaLogin';
 import PantallaGarage from './src/screens/PantallaGarage';
-import PantallaHerramientas from './src/screens/PantallaProductos';
 import PantallaCalendario from './src/screens/PantallaCalendario';
 import PantallaPerfil from './src/screens/PantallaPerfil';
 import PantallaMantenimientos from './src/screens/PantallaMantenimientos';
