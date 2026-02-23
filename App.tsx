@@ -10,6 +10,7 @@ import PantallaHerramientas from './src/screens/PantallaProductos';
 import PantallaCalendario from './src/screens/PantallaCalendario';
 import PantallaPerfil from './src/screens/PantallaPerfil';
 import PantallaMantenimientos from './src/screens/PantallaMantenimientos';
+import PantallaProductos from './src/screens/PantallaProductos';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator(); // 3. Creamos el motor del menú
@@ -21,20 +22,21 @@ function MenuPrincipal() {
       screenOptions={{
         headerShown: false, // Quitamos la barra de arriba fea
         tabBarStyle: {
-          backgroundColor: '#000000', // Color del menú
-          borderTopLeftRadius: 20,    // Curva arriba izquierda
-          borderTopRightRadius: 20,   // Curva arriba derecha
-          position: 'absolute',       // Hace que el menú flote un poco
+        backgroundColor: '#313131', 
+          borderRadius: 30,            
+          position: 'absolute',       
           height: 60,
-          borderTopWidth: 0,          // Quita la línea gris de separación
+          borderTopWidth: 0,          
+          bottom: 30,
+          width: '90%',               // Ocupa el 90%
         },
-        tabBarActiveTintColor: '#FF3366', // Color del texto cuando estás en esa pestaña
+        tabBarActiveTintColor: '#ffffff', // Color del texto cuando estás en esa pestaña
         tabBarInactiveTintColor: '#888888', // Color de las pestañas inactivas
       }}
     >
       <Tab.Screen name="Garage" component={PantallaGarage} />
+      <Tab.Screen name="Productos" component={PantallaProductos} />
       <Tab.Screen name="Mantenimientos" component={PantallaMantenimientos} />
-      <Tab.Screen name="Herramientas" component={PantallaHerramientas} />
       <Tab.Screen name="Calendario" component={PantallaCalendario} />
       <Tab.Screen name="Perfil" component={PantallaPerfil} />
     </Tab.Navigator>
