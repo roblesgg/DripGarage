@@ -27,12 +27,6 @@ const PantallaBienvenida = ({ navigation }: any) => {
       {/* Logo de DripDev. Le sumamos los insets.bottom al bottom original de 30 */}
       <Image 
         source={require('../../assets/DripDevLogo.png')} 
-        style={{
-          width: 80, 
-          height: 80, 
-          position: 'absolute', 
-          bottom: 30 + insets.bottom
-        }} 
       />
 
     </ImageBackground>
@@ -82,6 +76,11 @@ const styles = StyleSheet.create({
     letterSpacing: 2, 
     includeFontPadding: false,
   },
+  logoDrip: {
+    width: 80, 
+    height: 80, 
+    position: 'absolute', 
+  }
 });
 
 export default PantallaBienvenida;
