@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground} from 'react-native';
+import {Text, StyleSheet, ImageBackground} from 'react-native';
 
 const PantallaGaraje = () => {
   return (
@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titulo: {
-    color: '#FFFFFF',letterSpacing
+    color: '#FFFFFF',
+    letterSpacing: 2,
     fontSize: 35,
     fontFamily: 'Montserrat-Bold',
   },
