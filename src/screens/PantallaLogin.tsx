@@ -14,27 +14,19 @@ const PantallaBienvenida = ({ navigation }: any) => {
         <Text style={styles.textoGarage}>Garage</Text>
       </View>
 
-      {/* 2. Botón Entrar: Forzamos el position absolute directamente aquí */}
+      {/* 2. Botón Entrar: Solo dejamos la matemática dinámica arriba */}
       <TouchableOpacity 
-        style={[
-          styles.botonEntrar, 
-          { position: 'absolute', bottom: 150 + insets.bottom } // <-- ¡FORZADO A FLOTAR!
-        ]} 
+        style={[styles.botonEntrar, { bottom: 150 + insets.bottom }]} 
         onPress={() => navigation.replace('Principal')}
       >
         <Text style={styles.textoBoton}>Entrar</Text>
       </TouchableOpacity>
 
-      {/* 3. Logo DripDev: Forzamos el tamaño y la posición directamente aquí */}
+      {/* 3. Logo DripDev: Solo dejamos la matemática dinámica arriba */}
       <Image 
         source={require('../../assets/DripDevLogo.png')} 
-        style={{
-          width: 80, 
-          height: 80, 
-          position: 'absolute', // <-- ¡FORZADO A FLOTAR!
-          bottom: 30 + insets.bottom
-        }} 
-        resizeMode="contain" // <-- Esto evita que la imagen se desborde de sus 80x80
+        style={[styles.logoDrip, { bottom: 30 + insets.bottom }]} 
+        resizeMode="contain"
       />
 
     </ImageBackground>
@@ -45,7 +37,7 @@ const styles = StyleSheet.create({
   pantalla: {
     flex: 1, 
     alignItems: 'center', 
-    paddingTop: 100, // Empuja el título hacia abajo
+    paddingTop: 100, 
   },
   cajaTitulo: {
     alignItems: 'center',
@@ -64,6 +56,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   botonEntrar: {
+    position: 'absolute',     // ¡Vuelve a estar aquí abajo!
     backgroundColor: '#1E1E1E', 
     paddingVertical: 15, 
     paddingHorizontal: 60, 
@@ -80,6 +73,11 @@ const styles = StyleSheet.create({
     letterSpacing: 2, 
     includeFontPadding: false,
   },
+  logoDrip: {
+    position: 'absolute',     // ¡Vuelve a estar aquí abajo!
+    width: 80,                // ¡Vuelve a estar aquí abajo!
+    height: 80,               // ¡Vuelve a estar aquí abajo!
+  }
 });
 
 export default PantallaBienvenida;
