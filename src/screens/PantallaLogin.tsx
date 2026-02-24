@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   botonEntrar: {
-    position: 'absolute',     // ¡Vuelve a estar aquí abajo!
+    position: 'absolute',    
     backgroundColor: '#1E1E1E', 
     paddingVertical: 15, 
     paddingHorizontal: 60, 
@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
     includeFontPadding: false,
   },
   logoDrip: {
-    position: 'absolute',     // ¡Vuelve a estar aquí abajo!
-    width: 80,                // ¡Vuelve a estar aquí abajo!
-    height: 80,               // ¡Vuelve a estar aquí abajo!
+    position: 'absolute',     
+    width: 80,                
+    height: 80,              
   }
 });
 
