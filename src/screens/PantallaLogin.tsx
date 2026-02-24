@@ -1,46 +1,51 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image } from 'react-native';
-// 1. Importamos la herramienta del Área Segura
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const PantallaBienvenida = ({ navigation }: any) => {
-  // 2. Encendemos el radar para medir la pantalla
   const insets = useSafeAreaInsets();
 
   return (
     <ImageBackground source={require('../../assets/fondo.png')} style={styles.pantalla} resizeMode='cover'> 
       
-      {/* Caja de arriba para el título */}
+      {/* 1. Título */}
       <View style={styles.cajaTitulo}>
         <Text style={styles.textoDrip}>Drip</Text>
         <Text style={styles.textoGarage}>Garage</Text>
       </View>
 
-      {/* Caja de abajo para el botón. Le sumamos los insets.bottom al bottom original de 150 */}
+      {/* 2. Botón Entrar: Forzamos el position absolute directamente aquí */}
       <TouchableOpacity 
-        style={[styles.botonEntrar, { bottom: 150 + insets.bottom }]} 
+        style={[
+          styles.botonEntrar, 
+          { position: 'absolute', bottom: 150 + insets.bottom } // <-- ¡FORZADO A FLOTAR!
+        ]} 
         onPress={() => navigation.replace('Principal')}
       >
         <Text style={styles.textoBoton}>Entrar</Text>
       </TouchableOpacity>
 
-      {/* Logo de DripDev. Le sumamos los insets.bottom al bottom original de 30 */}
+      {/* 3. Logo DripDev: Forzamos el tamaño y la posición directamente aquí */}
       <Image 
         source={require('../../assets/DripDevLogo.png')} 
+        style={{
+          width: 80, 
+          height: 80, 
+          position: 'absolute', // <-- ¡FORZADO A FLOTAR!
+          bottom: 30 + insets.bottom
+        }} 
+        resizeMode="contain" // <-- Esto evita que la imagen se desborde de sus 80x80
       />
 
     </ImageBackground>
   );
 };
 
-// Aquí viene la magia del diseño (Flexbox)
 const styles = StyleSheet.create({
   pantalla: {
     flex: 1, 
     alignItems: 'center', 
-    justifyContent: 'space-between', 
-    paddingTop: 100, 
-    paddingBottom: 80, 
+    paddingTop: 100, // Empuja el título hacia abajo
   },
   cajaTitulo: {
     alignItems: 'center',
@@ -66,7 +71,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,           
     borderColor: '#555555',   
     elevation: 8,             
-    // Nota: He quitado el "bottom: 150" de aquí porque ahora se lo pasamos dinámicamente arriba en el TouchableOpacity
   },
   textoBoton: {
     fontSize: 22, 
@@ -76,11 +80,6 @@ const styles = StyleSheet.create({
     letterSpacing: 2, 
     includeFontPadding: false,
   },
-  logoDrip: {
-    width: 80, 
-    height: 80, 
-    position: 'absolute', 
-  }
 });
 
 export default PantallaBienvenida;
